@@ -18,8 +18,8 @@ jobs:
         uses: ./ # Use this action from the current repo
         with:
           token: ${{ secrets.HOMEBREW_TOKEN }}
-          tap: homebrew/core
-          cask: wget
+          tap: laniksj/homebrew-tap
+          cask: android-messages-plus
           livecheck: true
           dryrun: true
   test-bump:
@@ -30,7 +30,7 @@ jobs:
         uses: ./ # Use this action from the current repo
         with:
           token: ${{ secrets.HOMEBREW_TOKEN }}
-          tap: homebrew/core
-          cask: wget
-          tag: v1.21.4 # Use a known version/tag for testing
+          tap: laniksj/homebrew-tap
+          cask: android-messages-plus
+          livecheck: true
           dryrun: true

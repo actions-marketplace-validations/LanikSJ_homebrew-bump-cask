@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "cask"
+require "cask/cask_loader"
 require "utils/pypi"
 
 class Object
@@ -75,8 +76,8 @@ module Homebrew
   git "config", "--global", "user.name", user_name
   git "config", "--global", "user.email", user_email
 
-  # Tap the tap if desired
-  brew "tap", tap unless tap.blank?
+  # Tap the tap if desired (skip built-in taps)
+  brew "tap", tap unless tap.blank? || tap == "homebrew/core" || tap == "homebrew/cask" || tap == "homebrew/homebrew-cask"
 
   # Append additional PR message
   message = if message.blank?
@@ -92,16 +93,16 @@ module Homebrew
     cask = tap + "/" + cask if !tap.blank? && !cask.blank?
 
     # Get info about cask
-    stable = cask[cask].stable
-    is_git = stable.downloader.is_a? GitDownloadStrategy
+    stable = Cask::CaskLoader.load(cask)
+    is_git = false
 
     # Prepare tag and url
     tag = tag.delete_prefix "refs/tags/"
     version = Version.parse tag
-    url = stable.url.gsub stable.version, version
+    url = stable.url.to_s.gsub stable.version.to_s, version.to_s
 
     # Check if cask is originating from PyPi
-    pypi_url = PyPI.update_pypi_url(stable.url, version)
+    pypi_url = PyPI.update_pypi_url(stable.url.to_s, version)
     if pypi_url
       # Substitute url
       url = pypi_url
