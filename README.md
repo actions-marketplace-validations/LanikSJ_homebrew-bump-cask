@@ -7,6 +7,12 @@ checking for outdated casks.
 
 Works on Ubuntu and macOS runners.
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/461fc7358cfd415abf338d475d948157)](https://www.codacy.com/gh/LanikSJ/homebrew-bump-cask/dashboard?utm_source=github.com&utm_medium=referral&utm_content=LanikSJ/homebrew-bump-cask&utm_campaign=Badge_Grade)
+![GitHub Repo Size](https://img.shields.io/github/repo-size/laniksj/homebrew-bump-cask)
+![GitHub Code Size in Bytes](https://img.shields.io/github/languages/code-size/laniksj/homebrew-bump-cask)
+![GitHub Last Commit](https://img.shields.io/github/last-commit/laniksj/homebrew-bump-cask)
+![GitHub Commit Activity](https://img.shields.io/github/commit-activity/m/laniksj/homebrew-bump-cask)
+
 ## 📑 Table of Contents
 
 - [🐙 Security Note](#-security-note)
@@ -14,6 +20,8 @@ Works on Ubuntu and macOS runners.
   - [⚙️ Standard mode](#standard-mode)
   - [🔍 Livecheck mode](#-livecheck-mode)
 - [🔧 Troubleshooting](#-troubleshooting)
+  - [❓ Common Issues](#-common-issues)
+  - [🔍 Debugging](#-debugging)
 - [📚 Examples](#-examples)
 - [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
@@ -27,6 +35,10 @@ appropriate permissions to create forks and pull requests. Never use the default
 your repository.
 
 ## 💡 Usage
+
+[![GitHub Actions Workflow](https://img.shields.io/github/actions/workflow/status/LanikSJ/homebrew-bump-cask/cask-tests.yml)](https://github.com/LanikSJ/homebrew-bump-cask/actions/workflows/cask-tests.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub Release](https://img.shields.io/github/v/release/LanikSJ/homebrew-bump-cask)](https://github.com/LanikSJ/homebrew-bump-cask/releases)
 
 One should use the [Personal Access
 Token](https://github.com/settings/tokens/new?scopes=public_repo,workflow)
@@ -127,7 +139,7 @@ checked and bumped if needed.
 
 ## 🔧 Troubleshooting
 
-### Common Issues
+### ❓ Common Issues
 
 - **Action fails with authentication error**: Ensure your GitHub token has the
   required scopes (`public_repo` and `workflow` for standard mode). Verify the
@@ -144,7 +156,7 @@ checked and bumped if needed.
 - **Permission denied**: If using `no_fork: true`, ensure the token has write
   access to the target repository.
 
-### Debugging
+### 🔍 Debugging
 
 Enable debug logging by setting `ACTIONS_STEP_DEBUG` to `true` in your
 repository settings or as a secret.
